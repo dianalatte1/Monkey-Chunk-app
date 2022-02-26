@@ -8,11 +8,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Input from "../components/Input";
+import PhonicSoundButton from "../components/PhonicSoundButton";
+
 import db from "../localdb";
 
 const MainScreen = (props) => {
   let [text, setText] = useState("");
   let [chunks, setChunks] = useState([]);
+  let [phones, setPhones] = useState([]);
   return (
     <View style={styles.screen}>
       <Image
@@ -32,15 +35,24 @@ const MainScreen = (props) => {
             title="Go"
             onPress={() => {
               setChunks(db[text].chunks);
+              setPhones(db[text].phones);
             }}
           />
         </View>
         <View>
-          {chunks.map((item) => {
+          {/* {chunks.map((item) => {
             return (
               <TouchableOpacity style={styles.chunkButton}>
                 <Text style={styles.displayText}>{item}</Text>
               </TouchableOpacity>
+            );
+          })} */}
+          {chunks.map((item, index) => {
+            return (
+              <PhonicSoundButton
+                wordChunk={chunks[index]}
+                soundChunk={phones[index]}
+              />
             );
           })}
         </View>
@@ -61,7 +73,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: 300,
     height: 150,
-    maxWidth: "80%",
     alignItems: "center",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 2 },
@@ -82,20 +93,6 @@ const styles = StyleSheet.create({
   },
   input: {
     width: 50,
-  },
-  displayText: {
-    textAlign: "center",
-    fontSize: 25,
-  },
-  chunkButton: {
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
-    backgroundColor: "red",
-    borderRadius: 10,
-    width: "50%",
-    height: 50,
-    margin: 5,
   },
 });
 
