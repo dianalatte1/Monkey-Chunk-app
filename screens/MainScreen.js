@@ -38,8 +38,17 @@ const MainScreen = (props) => {
               setPhones(db[text].phones);
             }}
           />
+          {chunks.map((item, index) => {
+            return (
+              <PhonicSoundButton2
+                key={index}
+                wordChunk={chunks[index]}
+                soundChunk={phones[index]}
+              />
+            );
+          })}
         </View>
-        <View>
+        <View style={styles.buttonContainer}>
           {/* {chunks.map((item) => {
             return (
               <TouchableOpacity style={styles.chunkButton}>
@@ -47,14 +56,15 @@ const MainScreen = (props) => {
               </TouchableOpacity>
             );
           })} */}
-          {chunks.map((item, index) => {
+          {/* {chunks.map((item, index) => {
             return (
               <PhonicSoundButton2
+                key={index}
                 wordChunk={chunks[index]}
                 soundChunk={phones[index]}
               />
             );
-          })}
+          })} */}
         </View>
       </View>
     </View>
@@ -62,7 +72,7 @@ const MainScreen = (props) => {
 };
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    display: "flex",
     padding: 10,
     alignItems: "center",
   },
