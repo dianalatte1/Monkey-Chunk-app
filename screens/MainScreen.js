@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Input from "../components/Input";
-import PhonicSoundButton from "../components/PhonicSoundButton";
+import PhonicSoundButton2 from "../components/PhonicSoundButton2";
 
 import db from "../localdb";
 
@@ -49,7 +49,7 @@ const MainScreen = (props) => {
           })} */}
           {chunks.map((item, index) => {
             return (
-              <PhonicSoundButton
+              <PhonicSoundButton2
                 wordChunk={chunks[index]}
                 soundChunk={phones[index]}
               />
