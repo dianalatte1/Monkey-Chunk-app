@@ -2,9 +2,9 @@ import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { Audio } from "expo-av";
 
-const PhonicSoundButton = (props) => {
+const PhonicSoundButton = ({ soundChunk, wordChunk }) => {
   const [sound, setSound] = React.useState();
-  playSound = async (soundChunk) => {
+  const playSound = async (soundChunk) => {
     let soundLink =
       "https://s3-whitehatjrcontent.whjr.online/phones/" + soundChunk + ".mp3";
     await Audio.Sound.createAsync(
